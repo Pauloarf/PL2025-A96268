@@ -7,7 +7,7 @@
 - **Autor:**  
     <table>
     <tr>
-        <td><img src="../Images/Foto.jpg" width="100"></td>
+        <td><img src="../Images/Profile.jpg" width="100"></td>
         <td>
         <strong>Nome:</strong> Paulo Alexandre Rodrigues Ferreira<br>
         <strong>Número:</strong> A96268

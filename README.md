@@ -4,7 +4,7 @@
 
 <table>
   <tr>
-    <td><img src="./Images/Foto.jpg" width="150"></td>
+    <td><img src="./Images/Profile.jpg" width="150"></td>
     <td>
       <strong>Nome:</strong> Paulo Alexandre Rodrigues Ferreira  
       <br>
