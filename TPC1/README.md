@@ -27,7 +27,7 @@ Com a realização deste trabalho pretende-se criar um programa que some todas a
 
 ## 📂 Resultados  
 
-Como testes foram utilizados 3 textos, cada um com 100, 150 e 200 palavras. Os textos utilizados para estes testes estão disponiveis na secção [Anexos](#-anexos).
+Para a realização de testes foram utilizados 3 textos, cada um com 100, 150 e 200 palavras. Os textos utilizados para estes testes estão disponiveis na secção [Anexos](#-anexos).
 
 Os resultados obtidos foram os seguintes:
 
@@ -44,8 +44,11 @@ Os resultados obtidos foram os seguintes:
 > 
 > **Resultado do texto 3:**
 > 
-> Valor acumulado: 2887  
-> Valor acumulado final: 5959
+> Valor acumulado: 5910
+> Valor acumulado: 7503
+> Valor acumulado: 8577
+> Valor acumulado final: 8577
+
 
 ## 📎 Anexos
 
