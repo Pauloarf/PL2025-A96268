@@ -44,10 +44,10 @@ Os resultados obtidos foram os seguintes:
 > 
 > **Resultado do texto 3:**
 > 
-> Valor acumulado: 5910
-> Valor acumulado: 7503
-> Valor acumulado: 8577
-> Valor acumulado final: 8577
+> Valor acumulado: 5910  
+> Valor acumulado: 7503  
+> Valor acumulado: 8577  
+> Valor acumulado final: 8577  
 
 
 ## 📎 Anexos
