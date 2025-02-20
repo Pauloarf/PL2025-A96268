@@ -1,31 +1,57 @@
-import re
+def parseFile(filename):
+    correctText = []
+    correctLine = ""
+    with open(filename, "r") as file:
+        escape = False
+        textCapture = False
+        header = next(file)
+        correctText.append(header)
 
-# Função que dá parse do texto retirado do csv, e tokeniza-o
-def parse_music_data(text):
-    pattern = re.compile(r'(.+?);"(.*?)";(\d+);(\w+);(.+?);(\d{2}:\d{2}:\d{2});(O\d+)', re.DOTALL)
-    
-    lines = text.strip().split('\n')
-    headers = lines[0].split(';')
-    data_text = '\n'.join(lines[1:]) 
-    
-    matches = pattern.findall(data_text)
-    
-    cleaned_records = []
-    for match in matches:
-        cleaned_record = [" ".join(field.split()) for field in match]
-        cleaned_records.append(cleaned_record)
-    
-    return headers, cleaned_records
+        for line in file:
+            for i, char in enumerate(line):
+                if textCapture:
+                    if char == ';':
+                        continue
+                    correctLine += char
+                    if (char == '"'):
+                        if escape:
+                            escape = False
+                        else:
+                            if i + 1 < len(line) and line[i + 1] == '"':
+                                escape = True
+                            else:
+                                textCapture = False
+                    else:
+                        escape = False
+                else:
+                    correctLine += char
+                    if char == '"':
+                        textCapture = True
+            if not textCapture:
+                correctText.append(correctLine)
+                correctLine = ""
+        if correctLine:
+            correctText.append(correctLine)
+    return correctText
 
-# Recebe o header e os records para criar o csv
-def write_csv(filename, headers, records):
-    with open(filename, 'w', encoding='utf-8') as file:
-        file.write(';'.join(headers) + '\n')
-        for record in records:
-            file.write(';'.join(record) + '\n')
+def writeCSV(filename, correctText):
+    with open(filename, "w+") as newCSV:
+        for line in correctText:
+            line = " ".join(line.split())
+            newCSV.write(line);
+            newCSV.write('\n')
+
+
+def parseLines(text):
+    allFields = []
+    fields = []
+    for line in text:
+        fields = line.split(';')
+        allFields.append(fields)
+    return allFields
 
 # Processa os records para retirar a informação pertendida
-def process_music_data(records):
+def processData(records):
     composers = sorted(set(" ".join(reversed(record[4].split(','))) for record in records))
     
     period_count = {}
@@ -67,13 +93,8 @@ def print_results(composers, period_count, period_titles):
             print(f"  - {title}")
 
 
-## "Main"
-with open("TPC2/obras.csv", "r", encoding="utf-8") as f:
-    text = f.read()
-
-headers, records = parse_music_data(text)
-write_csv("TPC2/music_data.csv", headers, records)
-print("CSV file generated successfully!")
-
-composers, period_count, period_titles = process_music_data(records)
+text = parseFile("obras.csv")
+#writeCSV("obrasNormalized.csv", text)
+records = parseLines(text)
+composers, period_count, period_titles = processData(records)
 print_results(composers, period_count, period_titles)

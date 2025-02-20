@@ -26,24 +26,30 @@ Com a realização deste trabalho pretende-se criar um programa que trate e proc
 
 ## 📂 **Resultados**  
 
-Para processar o dataset das obras, utilizou-se **expressões regulares (regex)**, uma vez que o CSV original estava mal formatado e continha inconsistências, como quebras de linha dentro de campos e delimitadores irregulares.  
+1. **Leitura e Correção do CSV**
+   - Manipulação manual de caracteres para lidar com:
+     - Campos entre aspas com quebras de linha
+     - Delimitadores ';' dentro de campos citados
+     - Aspas duplas como caracteres de escape
+   - Função `parseFile()` realiza pré-processamento crítico
 
-### **Processo de Extração e Limpeza dos Dados**  
-1. **Uso de Regex**  
-   - Foi criada uma expressão regular capaz de identificar os campos de cada linha do CSV, garantindo que os dados fossem extraídos corretamente, mesmo com formatações inconsistentes.  
+2. **Normalização de Compositores**
+   - Extração de nomes do campo 4 do CSV
+   - Formatação para "Nome Sobrenome"
+   - Remoção de duplicatas com `set()`
 
-2. **Normalização dos Nomes dos Compositores**  
-   - Os nomes foram extraídos e organizados alfabeticamente.  
-   - Foram removidos espaços em excesso e caracteres inconsistentes.  
-   - Os nomes foram invertidos para o formato "Nome Sobrenome" e duplicações foram eliminadas para garantir uma lista única de compositores.  
+3. **Organização por Período Musical**
+   - Contagem de obras por período (campo 3)
+   - Agrupamento de títulos (campo 0) em dicionários
+   - Ordenação alfabética automática
 
-3. **Distribuição das Obras por Período**  
-   - Cada obra foi categorizada com base no seu período musical.  
-   - O número total de obras por período foi contabilizado.  
-
-4. **Listagem das Obras por Período**  
-   - Para cada período musical, foi criada uma lista das obras correspondentes.  
-   - Os títulos das obras foram ordenados alfabeticamente para melhor organização.  
+4. **Notas**
+- Manipulação direta de caracteres para parsing CSV
+- Uso de flags (`escape` e `textCapture`) para controle de contexto
+- Estruturas de dados otimizadas:
+  - `set()` para compositores únicos
+  - Dicionários para agrupamento por período
+- Ordenação nativa com `sorted()` e `list.sort()`
 
 
 ## 📎 **Anexos**  
@@ -51,8 +57,6 @@ Para processar o dataset das obras, utilizou-se **expressões regulares (regex)*
 ### **Saída do Programa**
 
 ```txt
-CSV file generated successfully!
-
 Lista ordenada dos compositores:
 Antonio Caldara
 Barbara Strozzi
@@ -64,46 +68,93 @@ Filpe Da Madre De Deus
 Francesco Cavalli
 Francesco Durante
 Franz Benda
-(... lista continua ...)
+Gaspar Fernandes
+Gaspar Sanz
+George Frideric Handel
+Giacomo Carissimi
+Giovanni Battista Bononcini
+Giovanni Battista Martini
+Giovanni Battista Pergolesi
+Giovanni Battista Sammartini
+Giuseppe Sammartini
+Guillaume-Gabriel Nivers
+Heinrich Ignaz Franz Biber
+Jacopo Peri
+(--- ... ---)
 
 Distribuição das obras por período:
+periodo: 1
 Barroco: 26
 Clássico: 15
-Medieval: 45
-Renascimento: 40
+Medieval: 48
+Renascimento: 41
+Século XX: 18
 Romântico: 19
-Contemporâneo: 6
+Contemporâneo: 7
 
 Obras por período:
+periodo:
+  - nome
 Barroco:
   - Ab Irato
   - Die Ideale, S.106
   - Fantasy No. 2
   - Hungarian Rhapsody No. 16
   - Hungarian Rhapsody No. 5
-  - Impromptu Op.51
-  - In the Steppes of Central Asia
-  - Mazurkas, Op. 30
-  - Nocturne in C minor
-  - Paganini Variations, Book I
-  - Polonaises Op.71
-  - Preludes Op. 11
-  - The Rondo
-  - Transcendental Études
-  - Études Op.10
+  - Hungarian Rhapsody No. 8
+  (--- ... ---)
 
 Clássico:
   - Bamboula, Op. 2
   - Capriccio Italien
   - Czech Suite
+  - French Overture
   - Hungarian Rhapsody No. 14
-  - Impromptu, Op. 29
-  - Serenade for Strings
-  - Serenata Notturna
-  - Stabat Mater
-  - Suite for Orchestra in B minor
-  - Zärtliche Liebe
+  (--- ... ---)
 
-(... lista continua para outros períodos ...)
+Medieval:
+  - Adagio in B minor
+  - Ballade No.1
+  - Ballades, Op. 10
+  - Barcarole Op. 60
+  - Coriolan Overture
+  - Dixit Dominus
+  - Eroica Variations
+  - Fantasia and Fugue, BWV 542, G minor
+  (--- ... ---)
 
+Renascimento:
+  - Bagatelles, Opus 119
+  - Bagatelles, Opus 33
+  - Cantatas, BWV 141-150
+  - Carnival Overture
+  - Estampes
+  (--- ... ---)
 
+Século XX:
+  - Berceuse
+  - Eleven Chorale Preludes, Op. 122
+  - Fürchte dich nicht
+  - Hungarian Rhapsody No. 17
+  (--- ... ---)
+
+Romântico:
+  - Book II
+  - Fantasy No. 4
+  - Feu d'artifice
+  - Feuilles d'Album
+  - Grande Tarantelle
+  - Jeux d'enfants
+  - Lobet den Herrn, alle Heiden
+  (--- ... ---)
+
+Contemporâneo:
+  - Impromptu, Op. 36
+  - Les cinq doigts
+  - Polonaises, Op.40
+  - Preludes Opus 51
+  - Rhapsodies, Op. 79
+  - Sonnerie de Ste-Geneviève du Mont-de-Paris
+  - Études Op. 25
+
+```
