@@ -16,19 +16,17 @@ def tokenize(input_string):
         {"id": "COMMENT", "expreg": r"#[^\n]*"},
     ]
 
-    # Combina todas as expressões regulares em uma única
     tokens_regex = '|'.join([f'(?P<{t["id"]}>{t["expreg"]})' for t in tokens])
 
     reconhecidos = []
     linha = 1
 
-    # Usa re.finditer para encontrar todos os tokens na string
     for m in re.finditer(tokens_regex, input_string):
         dic = m.groupdict()
         for token_id, value in dic.items():
             if value:
                 if token_id == "SKIP" or token_id == "COMMENT":
-                    continue  # Ignora espaços e comentários
+                    continue 
                 t = (token_id, value, linha, m.span())
                 reconhecidos.append(t)
                 break
