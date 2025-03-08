@@ -51,7 +51,7 @@ O segundo passo consistiu em definir expressões regulares para reconhecer cada 
 tokens = [
     {"id": "SELECT", "expreg": r"SELECT"},  # Palavra-chave SELECT
     {"id": "WHERE", "expreg": r"WHERE"},    # Palavra-chave WHERE
-    {"id": "LIMIT", "expreg": r"LIMIT"},    # Palavra-chave LIMIT
+    {"id": "LIMIT", "expreg": r"LIMIT \d+"},    # Palavra-chave LIMIT
     {"id": "VARIABLE", "expreg": r"\?\w+"}, # Variáveis (começam com ?)
     {"id": "STRING", "expreg": r'"[^"]+"@\w+'}, # Strings com idioma (ex: "Chuck Berry"@en)
     {"id": "URI", "expreg": r"\w+:\w+"},    # URIs (ex: dbo:MusicalArtists)
