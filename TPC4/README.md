@@ -1,4 +1,4 @@
-# Manifesto TPC2
+# Manifesto TPC4
 
 ## 📌 Informação do TPC e do Aluno  
 
@@ -30,8 +30,6 @@ select ?nome ?desc where {
 } LIMIT 1000
 ```
 Aqui está o conteúdo formatado em Markdown (`.md`). Para evitar quebra de mensagens, o código foi encapsulado com ` (crases simples) quando necessário.
-
----
 
 ## 📂 Resultados
 

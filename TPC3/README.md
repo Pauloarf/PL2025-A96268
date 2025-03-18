@@ -1,4 +1,4 @@
-# Manifesto TPC2
+# Manifesto TPC3
 
 ## 📌 Informação do TPC e do Aluno  
 

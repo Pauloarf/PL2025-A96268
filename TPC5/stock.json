@@ -1,0 +1,40 @@
+{
+    "stock": [
+        {
+            "cod": "A1",
+            "nome": "água 0.5L",
+            "quant": 14,
+            "preco": 0.7
+        },
+        {
+            "cod": "A2",
+            "nome": "água 0.3L",
+            "quant": 2,
+            "preco": 0.2
+        },
+        {
+            "cod": "A3",
+            "nome": "Coca-cola",
+            "quant": 5,
+            "preco": 0.3
+        },
+        {
+            "cod": "A4",
+            "nome": "Barrita de chocolate",
+            "quant": 0,
+            "preco": 0.6
+        },
+        {
+            "cod": "A5",
+            "nome": "Folhado misto",
+            "quant": 18,
+            "preco": 0.4
+        },
+        {
+            "cod": "A6",
+            "nome": "Pão de ló",
+            "quant": 3,
+            "preco": 1.3
+        }
+    ]
+}
